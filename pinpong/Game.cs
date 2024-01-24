@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PingPong.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace pinpong
 {
     public class Game
     {
-        private Tablero tablero;
+        private IGameObject tablero;
         private Pelota pelota;
         private Jugador jugadorA;
         private Jugador jugadorB;
@@ -39,9 +40,10 @@ namespace pinpong
             jugadorA.Source = "|";
             jugadorB.Source = "|";
             jugadorA.PositionX = 0;
-            jugadorA.PositionY = tablero.Height / 2;
-            jugadorB.PositionX = tablero.Width;
-            jugadorB.PositionY = tablero.Height / 2;
+            jugadorA.PositionY = ((Tablero)tablero).Height / 2;
+            jugadorB.PositionX = ((Tablero)tablero).Width;
+            jugadorB.PositionY = ((Tablero)tablero).Height / 2;
+            Console.CursorVisible = false;
         }
 
         public void OnPlay()
@@ -51,6 +53,8 @@ namespace pinpong
 
             while (true)
             {
+                tablero.OnDraw();
+
                 # region Dibujar Jugadores
                 Console.SetCursorPosition(jugadorA.PositionX, jugadorA.PositionY);
                 Console.Write(jugadorA.Source);
@@ -64,19 +68,19 @@ namespace pinpong
                 Console.Write(pelota.Source);
                 pelota.PositionX += velocidadx;
                 pelota.PositionY += velocidady;
-                if (pelota.PositionX >= tablero.Width)
+                if (pelota.PositionX >= ((Tablero)tablero).Width -1 )
                 {
                     velocidadx = -1;
                 }
-                if (pelota.PositionX <= 0)
+                if (pelota.PositionX <= 1)
                 {
                     velocidadx = 1;
                 }
-                if (pelota.PositionY >= tablero.Height)
+                if (pelota.PositionY >= ((Tablero)tablero).Height)
                 {
                     velocidady = -1;
                 }
-                if (pelota.PositionY <= 0)
+                if (pelota.PositionY <= 1)
                 {
                     velocidady = 1;
                 }
@@ -101,15 +105,16 @@ namespace pinpong
                     }
                     if (key.Key == ConsoleKey.S)
                     {
-                        if (jugadorA.PositionY < tablero.Height)
+                        if (jugadorA.PositionY < ((Tablero)tablero).Height)
                         {
                             jugadorA.PositionY++;
                         }
                         else
                         {
-                            jugadorA.PositionY = tablero.Height;
+                            jugadorA.PositionY = ((Tablero)tablero).Height;
                         }
                     }
+
 
                     if (key.Key == ConsoleKey.UpArrow)
                     {
@@ -122,8 +127,8 @@ namespace pinpong
 
                     if (jugadorB.PositionY < 0)
                         jugadorB.PositionY = 0;
-                    if (jugadorB.PositionY > tablero.Height)
-                        jugadorB.PositionY = tablero.Height;
+                    if (jugadorB.PositionY > ((Tablero)tablero).Height)
+                        jugadorB.PositionY = ((Tablero)tablero).Height;
                 }
 
             }

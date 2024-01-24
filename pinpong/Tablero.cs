@@ -19,7 +19,20 @@ namespace pinpong
 
         public void OnDraw()
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < Width; i++)
+            {
+                Console.SetCursorPosition(i, 0);
+                Console.Write("_");
+                Console.SetCursorPosition(i, Height);
+                Console.Write("_");
+            }
+            for (int i = 1; i < Height+1; i++)
+            {
+                Console.SetCursorPosition(0, i);
+                Console.Write("|");
+                Console.SetCursorPosition(Width, i);
+                Console.Write("|");
+            }
         }
     }
 }
