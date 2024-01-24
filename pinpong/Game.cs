@@ -13,13 +13,29 @@ namespace pinpong
         private Jugador jugadorA;
         private Jugador jugadorB;
 
-        public Game()
+        #region Singleton
+        private static Game? _instance;
+        public static Game Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new Game();
+                }
+                return _instance;
+            }
+            private set { }
+        }
+        #endregion
+
+        private Game()
         {
             jugadorA = new Jugador();
             jugadorB = new Jugador();
             pelota = new Pelota();
             tablero = new Tablero(pelota);
-            pelota.Source = "*";
+            pelota.Source = "O";
             jugadorA.Source = "|";
             jugadorB.Source = "|";
             jugadorA.PositionX = 0;

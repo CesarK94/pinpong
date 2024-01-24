@@ -2,6 +2,5 @@
 using pinpong;
 
 Console.WriteLine("Hello, World!");
-
-Game game = new Game();
-game.OnPlay();
+Console.WriteLine("Es la misma instancia" + (Game.Instance == Game.Instance));
+Game.Instance.OnPlay();

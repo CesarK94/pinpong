@@ -10,7 +10,7 @@ namespace pinpong
     {
         public int PositionX { get; set; }
         public int PositionY { get; set; } = 0;
-        public string Source { get; set; } = "*";
+        public string Source { get; set; } = "O";
 
         public Pelota()
         {
