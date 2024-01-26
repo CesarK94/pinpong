@@ -37,8 +37,8 @@ namespace pinpong
             pelota = new Pelota();
             tablero = new Tablero(pelota);
             pelota.Source = "O";
-            jugadorA.Source = "|";
-            jugadorB.Source = "|";
+            jugadorA.Source = "(";
+            jugadorB.Source = ")";
             jugadorA.PositionX = 0;
             jugadorA.PositionY = ((Tablero)tablero).Height / 2;
             jugadorB.PositionX = ((Tablero)tablero).Width;

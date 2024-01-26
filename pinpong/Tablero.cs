@@ -22,16 +22,16 @@ namespace pinpong
             for (int i = 0; i < Width; i++)
             {
                 Console.SetCursorPosition(i, 0);
-                Console.Write("_");
+                Console.WriteLine("_");
                 Console.SetCursorPosition(i, Height);
-                Console.Write("_");
+                Console.WriteLine("_");
             }
             for (int i = 1; i < Height+1; i++)
             {
                 Console.SetCursorPosition(0, i);
-                Console.Write("|");
+                Console.WriteLine("|");
                 Console.SetCursorPosition(Width, i);
-                Console.Write("|");
+                Console.WriteLine("|");
             }
         }
     }
