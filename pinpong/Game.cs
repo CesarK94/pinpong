@@ -84,7 +84,7 @@ namespace pinpong
                 {
                     velocidady = 1;
                 }
-                //agregamos un comentario de prueba...
+                //agregamos un comentario
 
                 Thread.Sleep(100);
                 Console.Clear();
